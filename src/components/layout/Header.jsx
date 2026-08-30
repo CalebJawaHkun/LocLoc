@@ -15,7 +15,7 @@ const Header = () => {
                         <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[#b86f4d]">
                             Locloc
                         </span>
-                        <span className="mt-1 text-lg font-semibold tracking-[-0.06em] text-stone-900">
+                        <span className="my-0 text-lg font-semibold tracking-[-0.06em] text-stone-900">
                             Cartography
                         </span>
                     </div>

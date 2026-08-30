@@ -9,6 +9,9 @@ const Footer = () => {
                 <p className="text-sm text-stone-600">
                     Explore. Discover. Connect.
                 </p>
+                <p className="text-sm text-stone-600">
+                    Designed and developed by Caleb Jawa Hkun.
+                </p>
             </div>
         </footer>
     );

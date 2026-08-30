@@ -15,27 +15,29 @@ const LocationList = ({
     }
 
     return (
-        <div className="space-y-3">
-            {locations.map((place) => {
-                const [lng, lat] = place.coords.coordinates;
+        <div className="theme-scrollbar h-full overflow-y-auto pr-1">
+            <div className="space-y-3 pb-1">
+                {locations.map((place) => {
+                    const [lng, lat] = place.coords.coordinates;
 
-                const distance = calculateDistance(
-                    userLocation,
-                    {
-                        lat,
-                        lng,
-                    }
-                );
+                    const distance = calculateDistance(
+                        userLocation,
+                        {
+                            lat,
+                            lng,
+                        }
+                    );
 
-                return (
-                    <LocationMiniCard
-                        key={place._id}
-                        place={place}
-                        distance={distance}
-                        onClick={onLocationSelect}
-                    />
-                );
-            })}
+                    return (
+                        <LocationMiniCard
+                            key={place._id}
+                            place={place}
+                            distance={distance}
+                            onClick={onLocationSelect}
+                        />
+                    );
+                })}
+            </div>
         </div>
     );
 };

@@ -10,7 +10,7 @@ const LocationMiniCard = ({ place, distance, onClick }) => {
         <button
             type="button"
             onClick={() => onClick(place)}
-            className="group w-full rounded-[22px] border border-stone-200 bg-white/80 p-3 text-left shadow-[0_12px_20px_-18px_rgba(60,44,29,0.5)] transition hover:border-[#d8c1a8] hover:bg-white hover:shadow-[0_16px_28px_-18px_rgba(60,44,29,0.6)]"
+            className="group w-full cursor-pointer rounded-[22px] border border-stone-200 bg-white/80 p-3 text-left shadow-[0_18px_30px_-22px_rgba(38,27,20,0.7)] transition hover:border-[#d8c1a8] hover:bg-white hover:shadow-[0_24px_36px_-24px_rgba(38,27,20,0.78)]"
         >
             <div className="flex gap-3">
                 <div className="h-20 w-20 shrink-0 overflow-hidden rounded-[18px] bg-stone-200">

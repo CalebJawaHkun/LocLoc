@@ -10,6 +10,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --scrollbar-thumb: rgba(184, 111, 77, 0.42);
+  --scrollbar-thumb-hover: rgba(184, 111, 77, 0.62);
+  --scrollbar-track: transparent;
 }
 
 html {
@@ -26,6 +29,34 @@ body {
 
 * {
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 button,
@@ -40,6 +71,33 @@ img {
 
 #root {
   min-height: 100vh;
+}
+
+.theme-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(184, 111, 77, 0.42) transparent;
+}
+
+.theme-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.theme-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.theme-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(184, 111, 77, 0.42);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+.theme-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 111, 77, 0.6);
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 .leaflet-container {

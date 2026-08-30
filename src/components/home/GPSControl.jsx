@@ -63,7 +63,7 @@ const GPSControl = ({
                 type="button"
                 onClick={handleLocate}
                 disabled={locating || isCenteredOnUser}
-                className="rounded-xl border border-white/10 bg-neutral-950/90 px-4 py-3 text-sm font-medium text-white shadow-xl backdrop-blur-md transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-70"
+                className="cursor-pointer rounded-4xl border border-white/10 bg-neutral-950/90 px-4 py-3 text-sm font-medium text-white shadow-xl backdrop-blur-md transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-70"
             >
                 {locating
                     ? "Locating..."

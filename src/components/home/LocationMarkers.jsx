@@ -10,19 +10,36 @@ const createCategoryIcon = (category) => {
     return L.divIcon({
         className: "",
         html: `
-            <div
-                style="
-                    width: 18px;
-                    height: 18px;
+            <div style="
+                position: relative;
+                width: 24px;
+                height: 24px;
+                transform: translateY(-2px);
+            ">
+                <div style="
+                    position: absolute;
+                    inset: 0;
                     background: ${color};
-                    border: 3px solid white;
+                    border: 3px solid rgba(255,255,255,0.98);
+                    border-radius: 999px 999px 999px 0;
+                    transform: rotate(-45deg);
+                    box-shadow: 0 8px 18px rgba(42, 28, 20, 0.28);
+                "></div>
+                <div style="
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    top: 7px;
+                    left: 7px;
+                    background: rgba(255,255,255,0.98);
                     border-radius: 50%;
-                    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
-                "
-            ></div>
+                    box-shadow: inset 0 0 0 2px ${color};
+                "></div>
+            </div>
         `,
-        iconSize: [18, 18],
-        iconAnchor: [9, 9],
+        iconSize: [24, 24],
+        iconAnchor: [12, 24],
+        popupAnchor: [0, -18],
     });
 };
 
