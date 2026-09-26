@@ -125,3 +125,84 @@ img {
   margin: 12px 14px;
 }
 
+/* Selected POI Highlighting Blip Animations */
+@keyframes poi-radar-pulse {
+  0% {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes poi-pin-bounce {
+  0%, 100% {
+    transform: translateY(0) scale(1.08);
+  }
+  50% {
+    transform: translateY(-5px) scale(1.15);
+  }
+}
+
+.poi-marker-container {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* User Location Highlighting Blip Animations */
+@keyframes user-radar-pulse {
+  0% {
+    transform: scale(0.35);
+    opacity: 0.95;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+}
+
+.user-location-marker-container {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Detail Card Bottom Drawer Slide-Up Animation */
+@keyframes drawer-slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-drawer-slide-up {
+  animation: drawer-slide-up 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Detail Card Bottom Drawer Slide-Down (Exit) Animation */
+@keyframes drawer-slide-down {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0.2;
+  }
+}
+
+.animate-drawer-slide-down {
+  animation: drawer-slide-down 0.28s cubic-bezier(0.32, 0, 0.67, 0) forwards;
+}
+

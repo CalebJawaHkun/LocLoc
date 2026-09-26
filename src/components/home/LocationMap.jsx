@@ -14,6 +14,7 @@ import MapController from "./MapController";
 const TrackCenterListener = ({
     isCenteredOnUser,
     setIsCenteredOnUser,
+    onMapClick,
 }) => {
     useMapEvents({
         dragstart() {
@@ -25,6 +26,12 @@ const TrackCenterListener = ({
         zoomstart() {
             if (isCenteredOnUser) {
                 setIsCenteredOnUser(false);
+            }
+        },
+
+        click() {
+            if (onMapClick) {
+                onMapClick();
             }
         },
     });
@@ -57,6 +64,7 @@ const LocationMap = ({
             <TrackCenterListener
                 isCenteredOnUser={isCenteredOnUser}
                 setIsCenteredOnUser={setIsCenteredOnUser}
+                onMapClick={() => onLocationSelect(null)}
             />
 
             <TileLayer
@@ -66,6 +74,7 @@ const LocationMap = ({
 
             <LocationMarkers
                 locations={locations}
+                selectedLocation={selectedLocation}
                 onLocationSelect={onLocationSelect}
             />
 
@@ -84,4 +93,3 @@ const LocationMap = ({
 };
 
 export default LocationMap;
-

@@ -26,6 +26,16 @@ const LocationExplorer = ({
         return ["All", ...uniqueCategories];
     }, [locations]);
 
+    const categoryCounts = useMemo(() => {
+        const counts = { All: locations.length };
+        locations.forEach((place) => {
+            if (place.category) {
+                counts[place.category] = (counts[place.category] || 0) + 1;
+            }
+        });
+        return counts;
+    }, [locations]);
+
     const filteredLocations = useMemo(() => {
         const query = searchQuery.trim().toLowerCase();
 
@@ -49,22 +59,29 @@ const LocationExplorer = ({
 
     return (
         <div className="flex h-full flex-col">
-            <div className="shrink-0 space-y-4 border-b border-stone-200 bg-[#f8f3ed]/80 p-4 sm:p-5">
-                <div className="flex items-start justify-between gap-3">
-                    <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#b56d48]">
-                            Discover
-                        </p>
-                        <h1 className="mt-2 text-2xl font-semibold tracking-[-0.06em] text-stone-900">
-                            Explore
-                        </h1>
-                    </div>
-
-                    <span className="rounded-full bg-[#f0e0d0] px-2.5 py-1 text-xs font-semibold text-[#8a4f35]">
+            {/* Top Section: Location Mini Cards as Main Attraction */}
+            <div className="flex min-h-0 flex-1 flex-col overflow-hidden p-3.5 sm:p-4">
+                <div className="mb-2.5 flex items-center justify-between px-1">
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-stone-500">
+                        Places
+                    </span>
+                    <span className="rounded-full bg-[#f0e0d0] px-2 py-0.5 text-[11px] font-semibold text-[#8a4f35]">
                         {filteredLocations.length}
                     </span>
                 </div>
 
+                <div className="min-h-0 flex-1 overflow-hidden">
+                    <LocationList
+                        locations={filteredLocations}
+                        userLocation={userLocation}
+                        calculateDistance={calculateDistance}
+                        onLocationSelect={onLocationSelect}
+                    />
+                </div>
+            </div>
+
+            {/* Bottom Section: Minimalistic Search & Category Dropdown */}
+            <div className="shrink-0 space-y-2 border-t border-stone-200/80 bg-[#f8f3ed]/90 p-3 sm:p-3.5 backdrop-blur-md">
                 <LocationSearch
                     value={searchQuery}
                     onChange={setSearchQuery}
@@ -72,17 +89,9 @@ const LocationExplorer = ({
 
                 <CategoryFilters
                     categories={categories}
+                    categoryCounts={categoryCounts}
                     activeCategory={activeCategory}
                     onCategoryChange={setActiveCategory}
-                />
-            </div>
-
-            <div className="min-h-0 flex-1 overflow-hidden p-4 sm:p-5">
-                <LocationList
-                    locations={filteredLocations}
-                    userLocation={userLocation}
-                    calculateDistance={calculateDistance}
-                    onLocationSelect={onLocationSelect}
                 />
             </div>
         </div>

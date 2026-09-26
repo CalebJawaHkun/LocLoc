@@ -12,6 +12,7 @@ const Home = () => {
     const [userLocation, setUserLocation] = useState(null);
     const [isCenteredOnUser, setIsCenteredOnUser] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState(null);
+    const [isClosingDetail, setIsClosingDetail] = useState(false);
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -37,8 +38,23 @@ const Home = () => {
         loadLocations();
     }, []);
 
+    const handleCloseDetail = () => {
+        setIsClosingDetail(true);
+        setTimeout(() => {
+            setSelectedLocation(null);
+            setIsClosingDetail(false);
+        }, 280);
+    };
+
     const handleLocationSelect = (place) => {
-        setSelectedLocation(place);
+        if (!place) {
+            if (selectedLocation) {
+                handleCloseDetail();
+            }
+        } else {
+            setIsClosingDetail(false);
+            setSelectedLocation(place);
+        }
     };
 
     return (
@@ -88,9 +104,10 @@ const Home = () => {
                 {selectedLocation && (
                     <LocationDetailCard
                         place={selectedLocation}
-                            onClose={() => setSelectedLocation(null)}
-                        />
-                    )}
+                        isClosing={isClosingDetail}
+                        onClose={handleCloseDetail}
+                    />
+                )}
             </div>
         </main>
     );
